@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   webapp:
   - apiVersion: v2
-    created: "2024-10-24T17:08:07.280544-03:00"
+    created: "2024-10-24T17:28:19.638956-03:00"
     description: A Helm chart for Django web application with PostgreSQL
     digest: d8b45e7a7d2b6c4352b7eb40c837ba773bc5c484379339ed6fb7320c1c0cb3fb
     keywords:
@@ -14,6 +14,6 @@ entries:
     name: webapp
     type: application
     urls:
-    - https://prabhjotbawa.github.io/helm-charts.git/webapp-0.1.0.tgz
+    - https://prabhjotbawa.github.io/helm-charts/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2024-10-24T17:08:07.280011-03:00"
+generated: "2024-10-24T17:28:19.638026-03:00"
