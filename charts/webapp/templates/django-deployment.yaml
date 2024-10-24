@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-django
+spec:
+  replicas: {{ .Values.replicaCount.django }}
+  selector:
+    matchLabels:
+      app: django-app
+  template:
+    metadata:
+      labels:
+        app: django-app
+    spec:
+      containers:
+      - name: django-app
+        image: "{{ .Values.image.django.repository }}:{{ .Values.image.django.tag }}"
+        imagePullPolicy: {{ .Values.image.django.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.django.port }}
+        env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: DJANGO_DISABLE_MIGRATIONS
+          value: "{{ .Values.django.disableMigrations }}"
+        - name: DB_NAME
+          value: {{ .Values.postgresql.database }}
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-postgres-secrets
+              key: postgres-user
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-postgres-secrets
+              key: postgres-password
+        - name: DB_HOST
+          value: {{ .Release.Name }}-postgres-service
+        - name: DB_PORT
+          value: "{{ .Values.postgresql.port }}"
+        - name: ALLOWED_HOSTS
+          {{- if .Values.ingress.enabled }}
+          value: {{ .Values.ingress.host }}
+          {{- else }}
+          value: localhost,127.0.0.1
+          {{- end }}
+        - name: CSRF_TRUSTED_ORIGINS
+          {{- if .Values.ingress.enabled }}
+          value: https://{{ .Values.ingress.host }}
+          {{- else }}
+          value: http://localhost:5001/, http://127.0.0.1:5001/
+          {{- end }}

@@ -1,0 +1,13 @@
+Your application has been deployed!
+{{- if .Values.ingress.enabled }}
+Application URL: https://{{ .Values.ingress.host }}
+{{- else }}
+Application URL: "You must expose the deployment when ingress is disabled"
+{{- end }}
+Database: {{ .Values.postgresql.database }}
+
+To get the application pod name, run:
+  kubectl get pods --namespace {{ .Release.Namespace }} -l "app=django-app"
+
+To get the database pod name, run:
+  kubectl get pods --namespace {{ .Release.Namespace }} -l "app=postgres"

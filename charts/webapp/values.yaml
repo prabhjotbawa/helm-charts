@@ -1,0 +1,37 @@
+replicaCount:
+  django: 1
+  postgres: 1
+
+image:
+  django:
+    repository: prabhjotbawa/mywebapp
+    tag: latest
+    pullPolicy: IfNotPresent
+  postgres:
+    repository: postgres
+    tag: "13"
+    pullPolicy: IfNotPresent
+
+ingress:
+  enabled: false
+  className: external-nginx
+  host: testapp.prabhjotbawa.com
+  tls:
+    enabled: true
+    secretName: testapp-prabhjotbawa-com
+
+certManager:
+  enabled: false
+  email: your-email@devopsbyexample.com
+  server: https://acme-v02.api.letsencrypt.org/directory
+  issuerName: http-01-production
+
+postgresql:
+  database: mydatabase
+  user: myuser
+  password: mypassword
+  port: 5432
+
+django:
+  port: 5001
+  disableMigrations: false
