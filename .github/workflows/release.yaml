@@ -29,7 +29,32 @@ jobs:
         with:
           version: v3.8.1
 
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Package and Push Helm Charts
+        run: |
+          # Find all Chart.yaml files
+          find . -type f -name Chart.yaml -exec dirname {} \; | while read chart_dir; do
+            # Extract chart name and version
+            chart_name=$(yq eval '.name' "$chart_dir/Chart.yaml")
+            chart_version=$(yq eval '.version' "$chart_dir/Chart.yaml")
+
+            # Package the chart
+            helm package "$chart_dir"
+
+            # Push to GitHub Packages (OCI registry)
+            helm push "${chart_name}-${chart_version}.tgz" "oci://ghcr.io/${{ github.repository_owner }}/charts"
+
+            echo "Pushed $chart_name version $chart_version to OCI registry"
+          done
+
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.4.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
