@@ -9,6 +9,11 @@ on:
 
 jobs:
   release:
+    permissions:
+      contents: write  # needed for creating releases
+      packages: write  # needed for publishing packages
+      pages: write    # github pages
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
