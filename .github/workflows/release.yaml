@@ -7,13 +7,13 @@ on:
     paths:
       - 'charts/**'
 
+permissions:  # Add this permissions block
+  contents: write  # Required for creating releases
+  packages: write  # If you're also publishing packages
+  pages: write    # If you're using GitHub Pages
+
 jobs:
   release:
-    permissions:
-      contents: write  # needed for creating releases
-      packages: write  # needed for publishing packages
-      pages: write    # github pages
-
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
