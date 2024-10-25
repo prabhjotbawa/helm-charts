@@ -1,4 +1,8 @@
-## Installing via helm
+#  My Community Kubernetes Helm Charts                                      
+
+ [![Releases downloads](https://img.shields.io/github/downloads/prabhjotbawa/helm-charts/total.svg)](https://github.com/prabhjotbawa/helm-charts/releases)
+
+## Installing via helm                                  
 Helm must be installed to install to use helm-charts.
 ### Installing with ingress and cert-manager disabled
 To install, run
