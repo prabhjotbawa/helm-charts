@@ -1,6 +1,6 @@
 #  My Community Kubernetes Helm Charts                                      
 
- [![Releases downloads](https://img.shields.io/github/downloads/prabhjotbawa/helm-charts/total.svg)](https://github.com/prabhjotbawa/helm-charts/releases)
+![Release Charts](https://github.com/prabhjotbawa/helm-charts/workflows/Release%20Charts/badge.svg) [![Releases downloads](https://img.shields.io/github/downloads/prabhjotbawa/helm-charts/total.svg)](https://github.com/prabhjotbawa/helm-charts/releases)
 
 ## Installing via helm                                  
 Helm must be installed to install to use helm-charts.

@@ -4,8 +4,9 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch: # Helps to debug issues
 
-permissions:  # Add this permissions block
+permissions:
   contents: write  # Required for creating releases
   packages: write  # If you're also publishing packages
   pages: write    # If you're using GitHub Pages
