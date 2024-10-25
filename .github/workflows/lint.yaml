@@ -42,3 +42,10 @@ jobs:
             helm lint "$dir"
             helm template "$dir" > /dev/null # Validate templates can render
           done
+
+  call-release:
+    needs: lint
+    if: |
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'pull_request_target' && github.event.pull_request.merged == true)
+    uses: ./.github/workflows/release.yaml

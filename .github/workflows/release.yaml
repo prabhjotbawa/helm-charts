@@ -1,9 +1,7 @@
 name: Release Charts
 
 on:
-  push:
-    branches:
-      - main
+  workflow_call: # Make this workflow reusable
   workflow_dispatch: # Helps to debug issues
 
 permissions:
