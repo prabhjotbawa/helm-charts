@@ -2,6 +2,21 @@ apiVersion: v1
 entries:
   webapp:
   - apiVersion: v2
+    created: "2024-10-25T01:39:34.410478293Z"
+    description: A Helm chart for Django web application with PostgreSQL
+    digest: 585505b4ea849c018bb310beb77dacb8c5e62992b79304ab59142c26db8aff35
+    keywords:
+    - django
+    - postgresql
+    maintainers:
+    - email: prabhjotbawa@gmail.com
+      name: Prabhjot Bawa
+    name: webapp
+    type: application
+    urls:
+    - https://github.com/prabhjotbawa/helm-charts/releases/download/webapp-0.1.3/webapp-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
     created: "2024-10-24T23:57:23.715825616Z"
     description: A Helm chart for Django web application with PostgreSQL
     digest: 36cb1e86bcec5d0cbeb27d39e5fc6e9fd0682c220bdcb273ed36267eaa80a388
@@ -17,4 +32,4 @@ entries:
     - https://prabhjotbawa.github.io/helm-charts/webapp-0.1.2.tgz
     - https://github.com/prabhjotbawa/helm-charts/releases/download/webapp-0.1.2/webapp-0.1.2.tgz
     version: 0.1.2
-generated: "2024-10-24T23:57:23.715832549Z"
+generated: "2024-10-25T01:39:34.410490666Z"
