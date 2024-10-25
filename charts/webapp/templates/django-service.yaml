@@ -6,7 +6,8 @@ spec:
   selector:
     app: django-app
   ports:
-    - protocol: TCP
+    - name: django-port
+      protocol: TCP
       port: {{ .Values.django.port }}
       targetPort: {{ .Values.django.port }}
   type: ClusterIP

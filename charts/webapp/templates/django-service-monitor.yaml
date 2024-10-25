@@ -1,0 +1,16 @@
+{{- if .Values.serviceMonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ .Release.Name }}-django
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: django-app
+  endpoints:
+  - port: django-port
+    path: /metrics
+    interval: 15s
+{{- end }}

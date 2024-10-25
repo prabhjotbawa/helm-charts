@@ -35,3 +35,6 @@ postgresql:
 django:
   port: 5001
   disableMigrations: false
+
+serviceMonitor:
+  enabled: false
