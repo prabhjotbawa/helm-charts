@@ -6,7 +6,7 @@ image:
   django:
     repository: prabhjotbawa/mywebapp
     tag: latest
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
   postgres:
     repository: postgres
     tag: "13"

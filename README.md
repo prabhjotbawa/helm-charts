@@ -27,4 +27,20 @@ helm history my-webapp --namespace webapp
 ```
 helm install my-webapp my-webapp/webapp --namespace webapp --create-namespace --set certManager.enabled=true --set ingress.enabled=true
 ```
-Upgrade and Uninstall commands remain the same as above.
+
+### Installing with serviceMonitor enabled
+```
+helm install my-webapp my-webapp/webapp --namespace webapp --create-namespace --set serviceMonitor.enabled=true
+```
+
+Please note: Prometheus must be installed for the above functionality to work. 
+It can be installed following the below steps:
+```commandline
+helm install prometheus prometheus-community/kube-prometheus-stack -n prometheus
+```
+If using minikube, the service can be exposed running:
+```commandline
+minikube service prometheus-kube-prometheus-prometheus -n prometheus --url 
+```
+You may have to update `ALLOWED_HOSTS` to `*` to allow prometheus to scrape metrics. 
+I will fix it properly in a future release.
