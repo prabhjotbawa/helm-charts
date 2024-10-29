@@ -13,4 +13,7 @@ spec:
   - port: django-port
     path: /metrics
     interval: 15s
+  - port: django-port
+    path: /custom-metrics
+    interval: 15s
 {{- end }}
