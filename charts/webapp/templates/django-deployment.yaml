@@ -19,6 +19,10 @@ spec:
         ports:
         - containerPort: {{ .Values.django.port }}
         env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
         - name: NODE_NAME
           valueFrom:
             fieldRef:
@@ -52,4 +56,10 @@ spec:
           value: https://{{ .Values.ingress.host }}
           {{- else }}
           value: http://localhost:5001/, http://127.0.0.1:5001/
+          {{- end }}
+        - name: ENABLE_METRICS
+          {{- if .Values.serviceMonitor.enabled }}
+          value: 'true'
+          {{- else }}
+          value: 'false'
           {{- end }}

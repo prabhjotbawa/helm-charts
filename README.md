@@ -42,5 +42,4 @@ If using minikube, the service can be exposed running:
 ```commandline
 minikube service prometheus-kube-prometheus-prometheus -n prometheus --url 
 ```
-You may have to update `ALLOWED_HOSTS` to `*` to allow prometheus to scrape metrics. 
-I will fix it properly in a future release.
+I added a sample custom metrics called `data_inserted` which returns the number of rows available in the database.
