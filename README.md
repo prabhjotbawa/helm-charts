@@ -40,6 +40,12 @@ helm install prometheus prometheus-community/kube-prometheus-stack -n prometheus
 ```
 If using minikube, the service can be exposed running:
 ```commandline
-minikube service prometheus-kube-prometheus-prometheus -n prometheus --url 
+minikube -p multinode-demo service prometheus-kube-prometheus-prometheus -n prometheus --url 
 ```
+Grafana can also be exposed via:
+```commandline
+minikube -p multinode-demo service prometheus-grafana -n prometheus --url 
+```
+`multinode-demo` is the minikube cluster in this case so please ensure to replace it with your cluster.
+
 I added a sample custom metrics called `data_inserted` which returns the number of rows available in the database.
