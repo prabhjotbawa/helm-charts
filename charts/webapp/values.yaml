@@ -1,17 +1,15 @@
 replicaCount:
   django: 1
   postgres: 1
-
 image:
   django:
     repository: prabhjotbawa/mywebapp
-    tag: latest
+    tag: 248b1a7d2d293186e3ae5f062e93b943c934591d
     pullPolicy: Always
   postgres:
     repository: postgres
     tag: "13"
     pullPolicy: IfNotPresent
-
 ingress:
   enabled: false
   className: external-nginx
@@ -19,22 +17,18 @@ ingress:
   tls:
     enabled: true
     secretName: testapp-prabhjotbawa-com
-
 certManager:
   enabled: false
   email: your-email@devopsbyexample.com
   server: https://acme-v02.api.letsencrypt.org/directory
   issuerName: http-01-production
-
 postgresql:
   database: mydatabase
   user: myuser
   password: mypassword
   port: 5432
-
 django:
   port: 5001
   disableMigrations: false
-
 serviceMonitor:
   enabled: false
