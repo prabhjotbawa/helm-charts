@@ -18,6 +18,8 @@ spec:
         imagePullPolicy: {{ .Values.image.django.pullPolicy }}
         ports:
         - containerPort: {{ .Values.django.port }}
+        resources:
+          {{ .Values.django.resources }}
         env:
         - name: POD_IP
           valueFrom:

@@ -5,7 +5,7 @@ image:
   django:
     repository: prabhjotbawa/mywebapp
     tag: 248b1a7d2d293186e3ae5f062e93b943c934591d
-    pullPolicy: Always
+    pullPolicy: IfNotPresent
   postgres:
     repository: postgres
     tag: "13"
@@ -30,5 +30,12 @@ postgresql:
 django:
   port: 5001
   disableMigrations: false
+  resources:
+    requests:
+      cpu: "200m"
+      limits: "256Mi"
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
 serviceMonitor:
   enabled: false
