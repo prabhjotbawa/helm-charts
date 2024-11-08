@@ -19,7 +19,12 @@ spec:
         ports:
         - containerPort: {{ .Values.django.port }}
         resources:
-          {{ .Values.django.resources }}
+          requests:
+            cpu: {{ .Values.django.resources.requests.cpu }}
+            memory: {{ .Values.django.resources.requests.memory }}
+          limits:
+            cpu: {{ .Values.django.resources.limits.cpu }}
+            memory: {{ .Values.django.resources.limits.memory }}
         env:
         - name: POD_IP
           valueFrom:
