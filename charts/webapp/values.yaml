@@ -4,7 +4,7 @@ replicaCount:
 image:
   django:
     repository: prabhjotbawa/mywebapp
-    tag: 248b1a7d2d293186e3ae5f062e93b943c934591d
+    tag: f3f7a4e615f21c372108ad915f7f86cd45a66c4f
     pullPolicy: IfNotPresent
   postgres:
     repository: postgres

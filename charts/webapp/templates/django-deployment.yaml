@@ -18,6 +18,12 @@ spec:
         imagePullPolicy: {{ .Values.image.django.pullPolicy }}
         ports:
         - containerPort: {{ .Values.django.port }}
+        readinessProbe:
+          httpGet:
+            path: /health/
+            port: {{ .Values.django.port }}
+          initialDelaySeconds: 5
+          periodSeconds: 5
         resources:
           requests:
             cpu: {{ .Values.django.resources.requests.cpu }}
